@@ -1,0 +1,11 @@
+NEWD MVP V0.2.1 — CORRECTED
+
+Cách test nhanh nhất:
+1. Double-click OPEN_NEWD_V0.2.1.html
+2. Không cần chạy server hoặc cài Python.
+
+Để chạy source code riêng:
+- Windows: start-windows.bat
+- Mac/Linux: start-mac-linux.sh
+
+Bản cũ newd_instant_demo.html đã bị xoá.

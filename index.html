@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F47D6B" />
+  <meta name="description" content="newd — nền tảng thời trang secondhand nơi mỗi món đồ tìm thấy một chủ nhân mới." />
+  <title>newd — Mới với bạn.</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="assets/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="stylesheet" href="styles.css?v=0.2.0" />
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v9.7a.5.5 0 0 1-.5.5H15v-6H9v6H3.5a.5.5 0 0 1-.5-.5v-9.7Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.5-5 3.2-7 8-7s7.5 2 8 7"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.8a5.4 5.4 0 0 0-7.7 0L12 6.9l-1.1-1.1a5.4 5.4 0 0 0-7.7 7.7L12 22l8.8-8.5a5.4 5.4 0 0 0 0-7.7Z"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M6 14v6"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h4l1.5-2h5L16 7h4v12H4V7Z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.5 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.1l6.2-.9L12 2.5Z"/></symbol>
+    <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 22s7-6.3 7-13a7 7 0 1 0-14 0c0 6.7 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 4v6h6M4.8 15a8 8 0 1 0 1-8.3L4 10"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 2 1.5 5.3L19 9l-5.5 1.7L12 16l-1.5-5.3L5 9l5.5-1.7L12 2ZM19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15ZM5 14l.8 2.8L9 18l-3.2 1.2L5 22l-.8-2.8L1 18l3.2-1.2L5 14Z"/></symbol>
+    <symbol id="i-dress" viewBox="0 0 24 24"><path d="M9 3h6l1 5 4 12H4L8 8l1-5Z"/><path d="M9 3c.6 2.3 5.4 2.3 6 0"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="m8 4 4 2 4-2 5 4-3 4-2-2v10H8V10l-2 2-3-4 5-4Z"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l1 12H4L5 8Z"/><path d="M8 8a4 4 0 0 1 8 0"/></symbol>
+    <symbol id="i-glasses" viewBox="0 0 24 24"><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M11 13h2M3 11 1 9M21 11l2-2"/></symbol>
+    <symbol id="i-shoe" viewBox="0 0 24 24"><path d="M3 15c4 1 6-1 7-6l4 3c2 1 4 2 7 2v5H3v-4Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m3 11 18-8-8 18-2-8-8-2Z"/><path d="m11 13 10-10"/></symbol>
+  </svg>
+
+  <div class="page-backdrop"></div>
+  <div id="appShell" class="app-shell" aria-label="newd test application">
+    <header id="appHeader" class="app-header">
+      <button class="brand-button" id="brandButton" type="button" data-nav="home" aria-label="Trang chủ newd">
+        <span id="brandName" class="brand-name">newd</span>
+        <span id="brandSlogan" class="brand-slogan">MỚI VỚI BẠN.</span>
+      </button>
+      <button id="headerSearchButton" class="header-search-inline" type="button" data-nav="search" aria-label="Mở tìm kiếm">
+        <svg><use href="#i-search"></use></svg>
+        <span>Tìm kiếm món đồ</span>
+      </button>
+      <h1 id="headerTitle" class="header-title" hidden>newd</h1>
+      <button
+        id="headerFavoriteButton"
+        class="header-icon-button"
+        type="button"
+        data-action="go-saved"
+        aria-label="Mở mục yêu thích"
+      >
+        <svg><use href="#i-heart"></use></svg>
+      </button>
+    </header>
+
+    <main id="screenContainer" class="screen-container">
+      <section id="screen-home" class="screen active" data-screen="home" aria-label="Trang chủ">
+        <div id="homeCategoryRail" class="compact-category-rail" aria-label="Danh mục"></div>
+        <h2 class="home-section-title">Dành riêng cho bạn</h2>
+        <div id="homeFeed" class="listing-grid compact-listing-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="screen-search" class="screen" data-screen="search" aria-label="Tìm kiếm">
+        <label class="real-search search-page-search">
+          <svg><use href="#i-search"></use></svg>
+          <input id="searchInput" type="search" autocomplete="off" placeholder="Search for items or members" />
+          <button id="clearSearch" type="button" aria-label="Xoá tìm kiếm" hidden>
+            <svg><use href="#i-close"></use></svg>
+          </button>
+        </label>
+
+        <div id="searchCategoryChips" class="filter-chip-rail" hidden></div>
+        <div id="searchBrowseCards" class="search-browse-grid" aria-label="Khám phá danh mục"></div>
+        <div id="searchSuggestionPanel" class="search-suggestion-panel" hidden></div>
+
+        <div id="searchResultMeta" class="results-row" hidden>
+          <strong><span id="searchResultCount">0</span> món đồ</strong>
+          <select id="sortSelect" aria-label="Sắp xếp">
+            <option value="recommended">Gợi ý</option>
+            <option value="newest">Mới đăng</option>
+            <option value="priceLow">Giá thấp</option>
+            <option value="priceHigh">Giá cao</option>
+          </select>
+        </div>
+
+        <div id="searchFeed" class="listing-grid compact-listing-grid" aria-live="polite" hidden></div>
+        <div id="searchEmpty" class="empty-state" hidden>
+          <div class="empty-icon"><svg><use href="#i-search"></use></svg></div>
+          <h2>Chưa tìm thấy món phù hợp</h2>
+          <p>Thử đổi từ khoá hoặc chọn một danh mục khác.</p>
+          <button class="secondary-button" type="button" data-action="clear-filters">Đặt lại</button>
+        </div>
+      </section>
+
+      <section id="screen-sell" class="screen" data-screen="sell" aria-label="Đăng bán">
+        <form id="sellForm" class="sell-form" novalidate>
+          <section class="form-section photo-section">
+            <div class="form-section-title">
+              <span class="form-step">1</span>
+              <div>
+                <h2>Thêm ảnh</h2>
+                <p>Tối đa 3 ảnh. Ảnh đầu tiên sẽ là ảnh bìa.</p>
+              </div>
+            </div>
+
+            <label class="photo-upload-main" id="photoUploadMain">
+              <input id="photoInput" type="file" accept="image/*" multiple />
+              <span class="photo-upload-icon"><svg><use href="#i-plus"></use></svg></span>
+              <strong>Thêm ảnh</strong>
+              <small>JPG, PNG hoặc WEBP</small>
+            </label>
+            <div id="photoPreviewGrid" class="photo-preview-grid"></div>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-title">
+              <span class="form-step">2</span>
+              <div>
+                <h2>Thông tin món đồ</h2>
+                <p>Thông tin càng rõ, người mua càng dễ quyết định.</p>
+              </div>
+            </div>
+
+            <label class="form-field">
+              <span>Tiêu đề *</span>
+              <input id="sellTitle" name="title" type="text" maxlength="70" placeholder="Ví dụ: Áo cardigan len hồng" required />
+              <small><span id="sellTitleCount">0</span>/70</small>
+            </label>
+
+            <div class="form-field-grid">
+              <label class="form-field">
+                <span>Danh mục *</span>
+                <select id="sellCategory" name="category" required></select>
+              </label>
+              <label class="form-field">
+                <span>Kích thước *</span>
+                <select id="sellSize" name="size" required></select>
+              </label>
+            </div>
+
+            <label class="form-field">
+              <span>Thương hiệu</span>
+              <input id="sellBrand" name="brand" type="text" maxlength="50" placeholder="Ví dụ: Uniqlo" />
+            </label>
+
+            <label class="form-field">
+              <span>Tình trạng *</span>
+              <select id="sellCondition" name="condition" required></select>
+            </label>
+
+            <label class="form-field">
+              <span>Mô tả</span>
+              <textarea id="sellDescription" name="description" maxlength="400" rows="4" placeholder="Mô tả chất liệu, số đo, lỗi nếu có..."></textarea>
+              <small><span id="sellDescriptionCount">0</span>/400</small>
+            </label>
+          </section>
+
+          <section class="form-section">
+            <div class="form-section-title">
+              <span class="form-step">3</span>
+              <div>
+                <h2>Giá bán</h2>
+                <p>Nhập giá bạn muốn nhận cho món đồ.</p>
+              </div>
+            </div>
+
+            <label class="price-field">
+              <span>Giá bán *</span>
+              <div>
+                <input id="sellPrice" name="price" type="number" min="10000" step="10000" inputmode="numeric" placeholder="0" required />
+                <strong>đ</strong>
+              </div>
+            </label>
+          </section>
+
+          <div id="sellFormError" class="form-error" hidden></div>
+          <button class="primary-button sell-submit" type="submit">Đăng bán</button>
+        </form>
+      </section>
+
+      <section id="screen-inbox" class="screen" data-screen="inbox" aria-label="Tin nhắn">
+        <div id="inboxListView" class="inbox-list-view">
+        <div class="activity-tabs" role="tablist">
+          <button
+            class="activity-tab active"
+            type="button"
+            data-activity-tab="messages"
+          >
+            Tin nhắn
+            <span id="messageTabCount" class="activity-tab-count"></span>
+          </button>
+
+          <button
+            class="activity-tab"
+            type="button"
+            data-activity-tab="notifications"
+          >
+            Thông báo
+            <span id="notificationTabCount" class="activity-tab-count"></span>
+          </button>
+        </div>
+
+        <div id="messagesPanel" class="activity-panel">
+          <div id="conversationList" class="conversation-list"></div>
+        </div>
+
+        <div
+          id="notificationsPanel"
+          class="activity-panel"
+          hidden
+        >
+          <div id="notificationList" class="notification-list"></div>
+        </div>
+
+      </div>
+      <div
+        id="notificationsPanel"
+        class="activity-panel"
+        hidden
+      >
+        <div id="notificationList" class="notification-list"></div>
+      </div>
+
+        <div id="chatView" class="chat-view" hidden>
+          <header class="chat-header">
+            <button id="chatBackButton" class="round-icon-button" type="button" aria-label="Quay lại">
+              <svg><use href="#i-back"></use></svg>
+            </button>
+            <div id="chatPersonAvatar" class="avatar small-avatar">MA</div>
+            <div class="chat-person-copy">
+              <strong id="chatPersonName">Người bán</strong>
+              <span id="chatPersonStatus">Đang hoạt động</span>
+            </div>
+            <button class="round-icon-button" type="button" aria-label="Tuỳ chọn">
+              <svg><use href="#i-more"></use></svg>
+            </button>
+          </header>
+          <button id="chatListingStrip" class="chat-listing-strip" type="button"></button>
+          <div id="chatMessages" class="chat-messages"></div>
+          <form id="chatForm" class="chat-composer">
+            <input id="chatInput" type="text" maxlength="500" placeholder="Nhập tin nhắn..." autocomplete="off" />
+            <button type="submit" aria-label="Gửi">
+              <svg><use href="#i-send"></use></svg>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="screen-profile" class="screen" data-screen="profile" aria-label="Cá nhân">
+        <div class="profile-card">
+          <div id="profileAvatar" class="avatar profile-avatar">MA</div>
+          <div class="profile-copy">
+            <h1 id="profileName">Minh Anh</h1>
+            <p id="profileUsername">@minhcloset</p>
+            <div class="profile-location"><svg><use href="#i-location"></use></svg><span id="profileLocation">TP. Hồ Chí Minh</span></div>
+          </div>
+          <button class="round-icon-button" type="button" data-action="profile-more" aria-label="Tuỳ chọn">
+            <svg><use href="#i-more"></use></svg>
+          </button>
+        </div>
+
+        <p id="profileBio" class="profile-bio"></p>
+
+        <div class="profile-stats">
+          <div><strong id="profileRating">4.9</strong><span>Đánh giá</span></div>
+          <div><strong id="profileSold">18</strong><span>Đã bán</span></div>
+          <div><strong id="profileFollowers">126</strong><span>Người theo dõi</span></div>
+        </div>
+
+        <div class="profile-actions">
+          <button class="secondary-button" type="button" data-action="edit-profile">Chỉnh sửa hồ sơ</button>
+          <button class="icon-secondary-button" type="button" data-action="share-profile" aria-label="Chia sẻ hồ sơ"><svg><use href="#i-share"></use></svg></button>
+        </div>
+
+        <div class="profile-tabs" role="tablist">
+          <button class="active" type="button" data-profile-tab="selling">Đang bán <span id="sellingCount">0</span></button>
+          <button type="button" data-profile-tab="saved">Đã thích <span id="savedCount">0</span></button>
+        </div>
+
+        <div id="profileGrid" class="listing-grid compact-listing-grid profile-grid"></div>
+        <div id="profileEmpty" class="empty-state" hidden>
+          <div class="empty-icon"><svg><use href="#i-heart"></use></svg></div>
+          <h2>Chưa có món đồ nào</h2>
+          <p id="profileEmptyCopy">Các món bạn đăng sẽ xuất hiện ở đây.</p>
+          <button id="profileEmptyButton" class="primary-button compact-button" type="button">Đăng món đầu tiên</button>
+        </div>
+
+        <button class="reset-demo-button" type="button" data-action="reset-demo">
+          <svg><use href="#i-reset"></use></svg>
+          Đặt lại dữ liệu bản thử nghiệm
+        </button>
+      </section>
+    </main>
+
+    <nav id="bottomNav" class="bottom-nav" aria-label="Điều hướng chính">
+      <button class="nav-button active" type="button" data-nav="home">
+        <svg><use href="#i-home"></use></svg><span>Trang chủ</span>
+      </button>
+      <button class="nav-button" type="button" data-nav="search">
+        <svg><use href="#i-search"></use></svg><span>Tìm kiếm</span>
+      </button>
+      <button class="nav-button sell-nav-button" type="button" data-nav="sell">
+        <span class="sell-nav-circle"><svg><use href="#i-plus"></use></svg></span><span>Đăng bán</span>
+      </button>
+      <button class="nav-button" type="button" data-nav="inbox">
+        <span class="nav-icon-wrap"><svg><use href="#i-chat"></use></svg><span id="inboxNavBadge" class="nav-badge">2</span></span><span>Tin nhắn</span>
+      </button>
+      <button class="nav-button" type="button" data-nav="profile">
+        <svg><use href="#i-user"></use></svg><span>Cá nhân</span>
+      </button>
+    </nav>
+  </div>
+
+  <div id="listingModal" class="full-screen-modal" hidden aria-hidden="true">
+    <div class="modal-sheet listing-detail-sheet">
+      <header class="detail-header">
+        <button class="round-icon-button" type="button" data-action="close-listing" aria-label="Đóng">
+          <svg><use href="#i-back"></use></svg>
+        </button>
+        <div class="detail-header-actions">
+          <button class="round-icon-button" type="button" data-action="share-listing" aria-label="Chia sẻ"><svg><use href="#i-share"></use></svg></button>
+          <button class="round-icon-button" type="button" data-action="more-listing" aria-label="Tuỳ chọn"><svg><use href="#i-more"></use></svg></button>
+        </div>
+      </header>
+
+      <div class="detail-scroll">
+        <div class="detail-image-wrap">
+          <img id="detailImage" src="" alt="" />
+          <button id="detailFavorite" class="detail-favorite" type="button" aria-label="Thêm vào yêu thích"><svg><use href="#i-heart"></use></svg></button>
+        </div>
+
+        <div class="detail-content">
+          <div class="detail-title-row">
+            <div>
+              <p id="detailBrand" class="detail-brand"></p>
+              <h1 id="detailTitle"></h1>
+            </div>
+            <strong id="detailPrice" class="detail-price"></strong>
+          </div>
+
+          <div class="detail-meta-grid">
+            <div><span>Kích thước</span><strong id="detailSize"></strong></div>
+            <div><span>Tình trạng</span><strong id="detailCondition"></strong></div>
+            <div><span>Danh mục</span><strong id="detailCategory"></strong></div>
+            <div><span>Khu vực</span><strong id="detailLocation"></strong></div>
+          </div>
+
+          <section class="detail-section">
+            <h2>Mô tả</h2>
+            <p id="detailDescription"></p>
+            <div id="detailTags" class="tag-wrap"></div>
+          </section>
+
+          <button id="detailSellerCard" class="seller-card" type="button">
+            <span id="detailSellerAvatar" class="avatar">MA</span>
+            <span class="seller-card-copy">
+              <strong id="detailSellerName"></strong>
+              <span id="detailSellerType"></span>
+            </span>
+            <span class="seller-rating"><svg><use href="#i-star"></use></svg><strong id="detailSellerRating"></strong></span>
+            <svg class="seller-chevron"><use href="#i-chevron"></use></svg>
+          </button>
+
+          <section class="buyer-protection-card">
+            <div class="protection-icon"><svg><use href="#i-check"></use></svg></div>
+            <div>
+              <strong>Giao dịch thử nghiệm</strong>
+              <p>Thanh toán và giao hàng chưa được kết nối trong phiên bản này.</p>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer class="detail-actions">
+        <button id="messageSellerButton" class="secondary-button" type="button">Nhắn tin</button>
+        <button id="buyNowButton" class="primary-button" type="button">Mua ngay</button>
+      </footer>
+    </div>
+  </div>
+
+  <div id="filterModal" class="bottom-sheet-modal" hidden aria-hidden="true">
+    <button class="modal-scrim" type="button" data-action="close-filter" aria-label="Đóng bộ lọc"></button>
+    <section class="bottom-sheet" aria-label="Bộ lọc">
+      <div class="sheet-grabber"></div>
+      <div class="sheet-header">
+        <h2>Bộ lọc</h2>
+        <button class="text-link" type="button" data-action="clear-filters">Đặt lại</button>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterSize">Kích thước</label>
+        <div id="filterSizeChips" class="choice-chip-wrap"></div>
+      </div>
+
+      <div class="filter-group">
+        <label for="filterCondition">Tình trạng</label>
+        <div id="filterConditionChips" class="choice-chip-wrap"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-label-row">
+          <label for="filterPrice">Giá tối đa</label>
+          <strong id="filterPriceOutput">1.000.000 đ</strong>
+        </div>
+        <input id="filterPrice" class="range-input" type="range" min="100000" max="1000000" step="50000" value="1000000" />
+      </div>
+
+      <button id="applyFilterButton" class="primary-button" type="button">Xem kết quả</button>
+    </section>
+  </div>
+
+  <div id="checkoutModal" class="dialog-modal" hidden aria-hidden="true">
+    <button class="modal-scrim" type="button" data-action="close-checkout" aria-label="Đóng"></button>
+    <section class="dialog-card" aria-label="Xác nhận mua">
+      <button class="dialog-close" type="button" data-action="close-checkout" aria-label="Đóng"><svg><use href="#i-close"></use></svg></button>
+      <div class="dialog-icon"><svg><use href="#i-bag"></use></svg></div>
+      <h2>Xem trước đơn hàng</h2>
+      <p>Đây là mô phỏng. Ứng dụng chưa xử lý thanh toán thật.</p>
+      <div id="checkoutSummary" class="checkout-summary"></div>
+      <button id="confirmDemoOrder" class="primary-button" type="button">Xác nhận đơn thử nghiệm</button>
+    </section>
+  </div>
+
+  <div id="onboarding" class="onboarding" hidden>
+    <div class="onboarding-card">
+      <div class="onboarding-logo">
+        <span>newd</span>
+        <small>MỚI VỚI BẠN.</small>
+      </div>
+      <div class="onboarding-copy">
+        <p>Thời trang secondhand cho một vòng đời mới.</p>
+        <h1>Đồ cũ, cảm hứng mới.</h1>
+        <span>Khám phá, đăng bán và kết nối với cộng đồng yêu thời trang.</span>
+      </div>
+      <button id="startDemoButton" class="onboarding-button" type="button">Bắt đầu ngay</button>
+      <button id="skipOnboardingButton" class="onboarding-skip" type="button">Vào thẳng bản thử nghiệm</button>
+      <div class="onboarding-wave wave-one"></div>
+      <div class="onboarding-wave wave-two"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="brand.js?v=0.2.0"></script>
+  <script src="data.js?v=0.2.0"></script>
+  <script src="app.js?v=0.2.0"></script>
+</body>
+</html>
