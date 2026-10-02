@@ -1,36 +1,41 @@
-# START HERE
+# newd
 
-Mở file `OPEN_NEWD_V0.2.1.html` để xem ngay bản mới.
+Newd is a C2C (consumer to consumer) marketplace for second-hand clothes in Vietnam.
+People list clothes they no longer wear, and others browse, chat and buy.
 
-File cũ `newd_instant_demo.html` đã bị xoá hoàn toàn để không thể mở nhầm bản v0.1.
+## Stack
 
-# newd MVP v0.2.1 — corrected
+- **Next.js** (React + TypeScript): builds the pages and the server side of the app.
+- **Supabase** (coming in step 2): login, database and photo storage.
+- **Vercel** (later): hosting, so the app is on the internet.
 
-Phiên bản browser prototype đã cập nhật theo yêu cầu mới:
+## Run it on your computer
 
-## Thay đổi chính
-- Đổi nút thông báo thành nút **Yêu thích** dẫn thẳng tới tab **Đã thích** trong trang cá nhân.
-- Trang chủ gọn hơn:
-  - thanh tìm kiếm nằm giữa logo và nút yêu thích
-  - rail danh mục dạng bubble text-only: **Tất cả, Nữ, Nam, Phụ kiện, Giày dép**
-  - lưới sản phẩm nhỏ hơn để nhìn được nhiều sản phẩm hơn trên màn hình điện thoại.
-- Trang tìm kiếm đơn giản hóa:
-  - mặc định hiển thị các ô danh mục: **Nữ, Nam, Giày dép, Phụ kiện, Designer, Vintage, Trẻ con**
-  - khi gõ chữ sẽ hiện gợi ý dựa trên từ khóa đang có trong hệ thống.
-- Trang đăng bán:
-  - chỉ giữ tiêu đề **Đăng bán**
-  - không hiển thị logo/slogan và nút yêu thích ở header
-  - bổ sung tình trạng: **Mới còn tag, Like new, Rất tốt, Tốt, Đã qua sử dụng**.
-- Trang tin nhắn:
-  - bỏ chữ **Kết nối**
-  - tiêu đề **Tin nhắn** nằm cố định ở header khi cuộn.
+You need [Node.js](https://nodejs.org) (the LTS version) and [Git](https://git-scm.com).
 
-## Chạy app
-### Windows
-- Mở `start-windows.bat`
-
-### Mac/Linux
 ```bash
-python3 serve.py
+git clone https://github.com/Infergnog69/App.git
+cd App
+npm install       # downloads the packages listed in package.json
+npm run dev       # starts the app
 ```
-Sau đó mở link local hiện trong terminal.
+
+Then open http://localhost:3000 in your browser. Press `Ctrl+C` in the terminal to stop it.
+
+## Check the code
+
+```bash
+npm run lint      # looks for common mistakes
+npm run build     # checks the whole app compiles
+```
+
+## Folders
+
+- `app/`: the pages. `app/page.tsx` is the home page.
+- `public/`: images and files served as-is.
+- `prototype/`: the original ChatGPT browser prototype (v0.2.1), kept as a design reference.
+- `docs/LEARNING_LOG.md`: what we built and learned each session.
+
+## Secrets
+
+Real keys go in `.env.local`, which Git ignores. `.env.example` shows which keys are needed, with fake values.
