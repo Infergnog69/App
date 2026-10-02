@@ -10,13 +10,6 @@
   gap: 24px;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--coral);
-  letter-spacing: -1px;
-}
-
 .slogan {
   font-size: 12px;
   font-weight: 700;

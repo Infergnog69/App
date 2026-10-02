@@ -16,10 +16,8 @@ const categories = [
 export default function Home() {
   return (
     <main className={styles.page}>
-      <header>
-        <p className={styles.logo}>newd</p>
-        <p className={styles.slogan}>MỚI VỚI BẠN.</p>
-      </header>
+      {/* The "newd" logo now lives in the shared Header (components/Header.tsx). */}
+      <p className={styles.slogan}>MỚI VỚI BẠN.</p>
 
       <section className={styles.hero}>
         <h1>Đồ cũ, cảm hứng mới.</h1>
@@ -42,7 +40,7 @@ export default function Home() {
         ))}
       </ul>
 
-      <p className={styles.note}>Newd v0.3: bản đầu tiên chạy bằng Next.js.</p>
+      <p className={styles.note}>Newd v0.4: đã có đăng ký và đăng nhập.</p>
     </main>
   );
 }
