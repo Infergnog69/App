@@ -44,7 +44,6 @@
   font-weight: 600;
 }
 
-.note {
-  font-size: 13px;
-  color: var(--muted);
+.sectionTitle {
+  font-size: 18px;
 }

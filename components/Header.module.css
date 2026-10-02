@@ -31,7 +31,7 @@
 .email {
   color: var(--muted);
   font-weight: 400;
-  max-width: 180px;
+  max-width: 110px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

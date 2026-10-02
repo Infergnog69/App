@@ -30,11 +30,16 @@ Before the first run, connect it to Supabase:
 
 Never put the **secret** (service_role) key in this app.
 
+## Database changes
+
+Database changes live in `supabase/migrations/`, numbered in order. To apply one, open your Supabase project's **SQL Editor**, paste the whole file and click **Run**, once.
+
 Then open http://localhost:3000 in your browser. Press `Ctrl+C` in the terminal to stop it.
 
 ## Check the code
 
 ```bash
+npm test          # runs the automated tests (price rules etc.)
 npm run lint      # looks for common mistakes
 npm run build     # checks the whole app compiles
 ```
@@ -45,6 +50,9 @@ npm run build     # checks the whole app compiles
 - `app/auth/actions.ts`: what happens when someone signs up, logs in or logs out.
 - `components/`: pieces shared by several pages (the header, the login form).
 - `lib/supabase/`: the connection to Supabase.
+- `lib/listings.ts`: the rules for a listing (price limits, sizes, conditions), with tests in `lib/listings.test.ts`.
+- `app/sell`: the Đăng bán page. `app/listings/[id]`: one listing's page.
+- `supabase/migrations/`: database changes, applied in Supabase's SQL Editor.
 - `proxy.ts`: runs before every page to keep the login session fresh.
 - `public/`: images and files served as-is.
 - `prototype/`: the original ChatGPT browser prototype (v0.2.1), kept as a design reference.
