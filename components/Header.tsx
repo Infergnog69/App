@@ -17,6 +17,9 @@ export default async function Header() {
       </Link>
       {email ? (
         <form action={logOut} className={styles.right}>
+          <Link href="/sell" className={styles.pill}>
+            Đăng bán
+          </Link>
           <span className={styles.email}>{email}</span>
           <button type="submit" className={styles.linkButton}>
             Đăng xuất

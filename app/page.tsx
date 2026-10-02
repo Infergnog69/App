@@ -1,4 +1,5 @@
 // The home page. In Next.js, the file app/page.tsx is what you see at "/".
+import ListingGrid from "@/components/ListingGrid";
 import styles from "./page.module.css";
 
 // The category list from the prototype (prototype/brand.js). For now it's
@@ -40,7 +41,8 @@ export default function Home() {
         ))}
       </ul>
 
-      <p className={styles.note}>Newd v0.4: đã có đăng ký và đăng nhập.</p>
+      <h2 className={styles.sectionTitle}>Mới đăng</h2>
+      <ListingGrid />
     </main>
   );
 }
