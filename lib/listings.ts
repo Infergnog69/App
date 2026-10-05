@@ -14,6 +14,11 @@ export const CATEGORIES = [
 
 export const CONDITIONS = ["Mới còn tag", "Like new", "Rất tốt", "Tốt", "Đã qua sử dụng"] as const;
 
+export const LOCATIONS = ["TP. Hồ Chí Minh", "Hà Nội", "Đà Nẵng", "Cần Thơ", "Hải Phòng"] as const;
+
+// Shipping shown on the demo checkout (the database uses the same number).
+export const DEMO_SHIPPING = 30_000;
+
 export const SIZES = ["XS", "S", "M", "L", "XL", "Freesize", "36", "37", "38", "39", "40", "41"] as const;
 
 export const MIN_PRICE = 1_000; // 1.000 đ
@@ -29,6 +34,7 @@ export type ListingInput = {
   category: string;
   price: string; // as typed by the seller, e.g. "220.000"
   description: string;
+  location: string;
   photoPaths: string[];
 };
 
@@ -40,6 +46,7 @@ export type ValidListing = {
   category: string;
   price: number;
   description: string | null;
+  location: string;
   photo_paths: string[];
 };
 
@@ -80,6 +87,7 @@ export function validateListing(
   if (!CATEGORIES.some((category) => category.id === input.category)) errors.push("Vui lòng chọn danh mục.");
   if (price === null) errors.push("Giá phải là số từ 1.000 đ đến 100.000.000 đ.");
   if (description.length > 1000) errors.push("Mô tả tối đa 1000 ký tự.");
+  if (!(LOCATIONS as readonly string[]).includes(input.location)) errors.push("Vui lòng chọn khu vực.");
   if (input.photoPaths.length < 1 || input.photoPaths.length > MAX_PHOTOS) {
     errors.push(`Cần từ 1 đến ${MAX_PHOTOS} ảnh.`);
   }
@@ -96,6 +104,7 @@ export function validateListing(
       category: input.category,
       price,
       description: description || null,
+      location: input.location,
       photo_paths: input.photoPaths,
     },
   };

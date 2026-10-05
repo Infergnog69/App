@@ -47,6 +47,7 @@ describe("validateListing", () => {
     category: "women",
     price: "220.000",
     description: "Mặc hai lần.",
+    location: "Hà Nội",
     photoPaths: ["user-id/photo.jpg"],
   };
 
@@ -79,5 +80,6 @@ describe("validateListing", () => {
     expect(validateListing({ ...good, category: "cars" }).ok).toBe(false);
     expect(validateListing({ ...good, condition: "Hỏng" }).ok).toBe(false);
     expect(validateListing({ ...good, size: "XXXL" }).ok).toBe(false);
+    expect(validateListing({ ...good, location: "Paris" }).ok).toBe(false);
   });
 });
