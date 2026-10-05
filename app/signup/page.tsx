@@ -6,9 +6,11 @@ export default async function SignupPage({ searchParams }: PageProps<"/signup">)
   const { error } = await searchParams;
   return (
     <AuthForm
-      title="Đăng ký"
+      heading="Tạo tài khoản"
+      intro="Tên hiển thị sẽ hiện trên hồ sơ của bạn. Email luôn được giữ kín."
       submitLabel="Tạo tài khoản"
       action={signUp}
+      askName
       error={typeof error === "string" ? error : undefined}
       switchText="Đã có tài khoản?"
       switchHref="/login"

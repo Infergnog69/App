@@ -1,11 +1,12 @@
-// One form used by both the sign up and log in pages, so they look the same.
+// One form used by both the sign up and log in pages, in the prototype's card style.
 import Link from "next/link";
-import styles from "./AuthForm.module.css";
 
 type Props = {
-  title: string;
+  heading: string;
+  intro: string;
   submitLabel: string;
   action: (formData: FormData) => Promise<void>;
+  askName?: boolean; // sign up also asks for a display name
   error?: string;
   message?: string;
   switchText: string;
@@ -15,36 +16,44 @@ type Props = {
 
 export default function AuthForm(props: Props) {
   return (
-    <main className={styles.page}>
-      <h1 className={styles.title}>{props.title}</h1>
+    <section className="screen active">
+      <form action={props.action} className="sell-form">
+        {props.message && <div className="form-notice">{props.message}</div>}
 
-      {props.error && <p className={styles.error}>{props.error}</p>}
-      {props.message && <p className={styles.message}>{props.message}</p>}
+        <section className="form-section">
+          <div className="form-section-title">
+            <div>
+              <h2>{props.heading}</h2>
+              <p>{props.intro}</p>
+            </div>
+          </div>
 
-      <form action={props.action} className={styles.form}>
-        <label className={styles.label}>
-          Email
-          <input name="email" type="email" required autoComplete="email" className={styles.input} />
-        </label>
-        <label className={styles.label}>
-          Mật khẩu
-          <input
-            name="password"
-            type="password"
-            required
-            minLength={8}
-            autoComplete="current-password"
-            className={styles.input}
-          />
-        </label>
-        <button type="submit" className={styles.button}>
+          {props.askName && (
+            <label className="form-field">
+              <span>Tên hiển thị</span>
+              <input name="displayName" maxLength={50} placeholder="Ví dụ: Minh Anh" autoComplete="nickname" />
+            </label>
+          )}
+          <label className="form-field">
+            <span>Email</span>
+            <input name="email" type="email" required autoComplete="email" />
+          </label>
+          <label className="form-field">
+            <span>Mật khẩu</span>
+            <input name="password" type="password" required minLength={8} autoComplete={props.askName ? "new-password" : "current-password"} />
+          </label>
+        </section>
+
+        {props.error && <div className="form-error" role="alert">{props.error}</div>}
+
+        <button type="submit" className="primary-button sell-submit">
           {props.submitLabel}
         </button>
-      </form>
 
-      <p className={styles.switch}>
-        {props.switchText} <Link href={props.switchHref}>{props.switchLabel}</Link>
-      </p>
-    </main>
+        <p className="auth-switch">
+          {props.switchText} <Link href={props.switchHref}>{props.switchLabel}</Link>
+        </p>
+      </form>
+    </section>
   );
 }
