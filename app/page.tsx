@@ -1,48 +1,55 @@
-// The home page. In Next.js, the file app/page.tsx is what you see at "/".
+// The home page ("/"): category pills and the newest listings.
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
+import { getFeed, getLikedIds, getUserId } from "@/lib/data";
 import ListingGrid from "@/components/ListingGrid";
-import styles from "./page.module.css";
+import EmptyState from "@/components/EmptyState";
 
-// The category list from the prototype (prototype/brand.js). For now it's
-// written straight into the code; later it will come from the database.
-const categories = [
-  { label: "Nữ", colour: "#FFF1B6" },
-  { label: "Nam", colour: "#DDE9F7" },
-  { label: "Phụ kiện", colour: "#FAD8CF" },
-  { label: "Giày dép", colour: "#E6F2E4" },
-  { label: "Designer", colour: "#ECE8E2" },
-  { label: "Vintage", colour: "#F5E9D6" },
-  { label: "Trẻ con", colour: "#FBE1D8" },
+// The pills shown on the home page, as in the prototype.
+const HOME_CATEGORIES = [
+  { id: null, label: "Tất cả" },
+  { id: "women", label: "Nữ" },
+  { id: "men", label: "Nam" },
+  { id: "accessories", label: "Phụ kiện" },
+  { id: "shoes", label: "Giày dép" },
 ];
 
-export default function Home() {
+export default async function Home({ searchParams }: PageProps<"/">) {
+  const { category: picked } = await searchParams;
+  const category = HOME_CATEGORIES.find((c) => c.id === picked)?.id ?? null;
+
+  const supabase = await createClient();
+  const userId = await getUserId(supabase);
+  const [listings, likedIds] = await Promise.all([getFeed(supabase, category), getLikedIds(supabase, userId)]);
+
   return (
-    <main className={styles.page}>
-      {/* The "newd" logo now lives in the shared Header (components/Header.tsx). */}
-      <p className={styles.slogan}>MỚI VỚI BẠN.</p>
-
-      <section className={styles.hero}>
-        <h1>Đồ cũ, cảm hứng mới.</h1>
-        <p>
-          Nền tảng thời trang secondhand nơi mỗi món đồ tìm thấy một chủ nhân
-          mới.
-        </p>
-      </section>
-
-      <ul className={styles.categories}>
-        {/* .map() turns each item in the list into one bubble on screen */}
-        {categories.map((category) => (
-          <li
-            key={category.label}
-            className={styles.category}
-            style={{ background: category.colour }}
+    <section className="screen active">
+      <div className="compact-category-rail" aria-label="Danh mục">
+        {HOME_CATEGORIES.map((c) => (
+          <Link
+            key={c.label}
+            href={c.id ? `/?category=${c.id}` : "/"}
+            className={`category-pill${c.id === category ? " active" : ""}`}
+            style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}
           >
-            {category.label}
-          </li>
+            {c.label}
+          </Link>
         ))}
-      </ul>
+      </div>
 
-      <h2 className={styles.sectionTitle}>Mới đăng</h2>
-      <ListingGrid />
-    </main>
+      <h2 className="home-section-title">Dành riêng cho bạn</h2>
+
+      {listings.length > 0 ? (
+        <ListingGrid listings={listings} likedIds={likedIds} />
+      ) : (
+        <EmptyState
+          icon="sparkles"
+          title="Chưa có món đồ nào"
+          text="Hãy là người đầu tiên đăng bán món đồ của bạn."
+          href="/sell"
+          action="Đăng món đầu tiên"
+        />
+      )}
+    </section>
   );
 }

@@ -22,3 +22,11 @@
 - **Privacy:** photos are shrunk in the browser before upload, which also strips hidden GPS data; listings never show the seller's email.
 - **Tests:** `npm test` checks the price rules and listing validation (11 tests).
 - **Next:** browse, search and filter (step 4).
+
+## 2026-10-05: Prototype features ported to the real app
+
+- **Built:** every screen of the prototype on top of Supabase: home with category pills, search with suggestions, sorting and a filter sheet, a full-screen listing page with share, likes, chat with sellers, a demo checkout, notifications, profiles (yours, other people's, and an edit page), and the onboarding card. The prototype's stylesheet is now `app/globals.css`, so the look is the same.
+- **Concepts:** database triggers (the database keeps like counts and prices honest by itself), counters and "unread" state, client vs server components, portals (drawing a pop-up straight into the page body), why one big change still goes in several small commits.
+- **Privacy:** profiles only show a display name, @username, city and bio, never an email. Chats are only readable by the two people in them. Demo orders never take payment details.
+- **Tests:** 30 tests (prices, listing validation, search, profiles, time formatting).
+- **Next:** run migration `0002`, try every screen with two test accounts, then decide what to polish.

@@ -7,7 +7,8 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
   const { error, message } = await searchParams;
   return (
     <AuthForm
-      title="Đăng nhập"
+      heading="Chào mừng trở lại"
+      intro="Đăng nhập để mua, bán và nhắn tin trên newd."
       submitLabel="Đăng nhập"
       action={logIn}
       error={typeof error === "string" ? error : undefined}

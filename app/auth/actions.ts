@@ -23,7 +23,14 @@ export async function signUp(formData: FormData) {
   }
 
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  // The display name is saved with the account; the database copies it into
+  // the public profile (see supabase/migrations/0002_...sql).
+  const displayName = String(formData.get("displayName") ?? "").trim().slice(0, 50);
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { display_name: displayName } },
+  });
   if (error) backWithError("/signup", error.message);
 
   // If "Confirm email" is switched on in Supabase, there's no session yet:

@@ -6,7 +6,7 @@ People list clothes they no longer wear, and others browse, chat and buy.
 ## Stack
 
 - **Next.js** (React + TypeScript): builds the pages and the server side of the app.
-- **Supabase**: login (since step 2), and later the database and photo storage.
+- **Supabase**: login, the database (listings, profiles, likes, chats, demo orders) and photo storage.
 - **Vercel** (later): hosting, so the app is on the internet.
 
 ## Run it on your computer
@@ -39,24 +39,32 @@ Then open http://localhost:3000 in your browser. Press `Ctrl+C` in the terminal 
 ## Check the code
 
 ```bash
-npm test          # runs the automated tests (price rules etc.)
+npm test          # runs the automated tests (price rules, search, profiles etc.)
 npm run lint      # looks for common mistakes
 npm run build     # checks the whole app compiles
 ```
 
 ## Folders
 
-- `app/`: the pages. `app/page.tsx` is the home page; `app/login` and `app/signup` are the account pages.
-- `app/auth/actions.ts`: what happens when someone signs up, logs in or logs out.
-- `components/`: pieces shared by several pages (the header, the login form).
-- `lib/supabase/`: the connection to Supabase.
-- `lib/listings.ts`: the rules for a listing (price limits, sizes, conditions), with tests in `lib/listings.test.ts`.
-- `app/sell`: the Đăng bán page. `app/listings/[id]`: one listing's page.
+- `app/`: the pages, one folder per address:
+  - `app/page.tsx` home, `app/search` Tìm kiếm, `app/sell` Đăng bán, `app/listings/[id]` one listing.
+  - `app/messages` inbox and notifications, `app/messages/[id]` one chat.
+  - `app/profile` your profile, `app/profile/edit` edit it, `app/profile/[id]` someone else's.
+  - `app/login` and `app/signup` the account pages.
+- `app/actions/` and `app/auth/actions.ts`: code that runs on the server when you press a button (like, send a message, demo order, save profile, log in).
+- `app/globals.css`: the whole look of the app, copied from the prototype. Brand colours are at the top.
+- `components/`: pieces shared by several pages (header, bottom bar, listing card, chat, filters).
+- `lib/supabase/`: the connection to Supabase. `lib/data.ts`: the database reads pages share.
+- `lib/listings.ts`, `lib/search.ts`, `lib/profile.ts`, `lib/format.ts`: rules and helpers, each with a `.test.ts` file.
 - `supabase/migrations/`: database changes, applied in Supabase's SQL Editor.
 - `proxy.ts`: runs before every page to keep the login session fresh.
 - `public/`: images and files served as-is.
 - `prototype/`: the original ChatGPT browser prototype (v0.2.1), kept as a design reference.
 - `docs/LEARNING_LOG.md`: what we built and learned each session.
+
+## Payments
+
+Checkout is a **demo only**: "Mua ngay" saves a test order, and no money moves.
 
 ## Secrets
 
